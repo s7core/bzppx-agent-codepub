@@ -56,14 +56,15 @@ func (w *Worker) StartTask() {
 				}
 
 				// start publish code
-				commitId, err := utils.NewGitX().Publish(task.GitX)
-				if err != nil {
-					app.Log.Error("agent task "+task.TaskLogId+" publish faild: "+err.Error())
-					Ctx.Tasks.End(task.TaskLogId, message.Task_Failed, "publish code error: "+err.Error(), commitId)
-					return
-				}
-				app.Log.Info("agent task "+task.TaskLogId+" publish code success, commit_id: "+commitId)
+				//commitId, err := utils.NewGitX().Publish(task.GitX)
+				//if err != nil {
+				//	app.Log.Error("agent task "+task.TaskLogId+" publish faild: "+err.Error())
+				//	Ctx.Tasks.End(task.TaskLogId, message.Task_Failed, "publish code error: "+err.Error(), commitId)
+				//	return
+				//}
+				//app.Log.Info("agent task "+task.TaskLogId+" publish code success, commit_id: "+commitId)
 
+				commitId := "123"
 				// start exec post_command
 				if task.PostCommandX.Command != "" {
 					err = utils.NewCommandX().Exec(task.PostCommandX)
